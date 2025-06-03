@@ -1,0 +1,89 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.AllUsers"
+             x:DataType="vm:AllUsersViewModel">
+    
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Classes="PageName"
+                   Text="Информация о пользователях системы"
+                   HorizontalAlignment="Left">
+            </TextBlock>
+            <ComboBox Classes="ComboBoxRole" ItemsSource="{Binding AllRole}" SelectedItem="{Binding SelectedRole}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Classes="ComboBoxRoleName" Text="{Binding Role}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1">
+            <ListBox ItemsSource="{Binding ListUser}" Classes="ListBoxUsers" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate >
+                    <DataTemplate>
+                        <Border Classes="CardBorder">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0"
+                                            Orientation="Vertical"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Margin="15">
+                                    <TextBlock Classes="UserNameCard" HorizontalAlignment="Center">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="FirstName"/>
+                                                <Binding Path="LastName"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Classes="UserRoleCard" Text="{Binding IdRoleNavigation.Role}" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Spacing="5" >
+                                    <TextBlock Classes="SectionTitle" Text="Курсы:"/>
+                                    <ItemsRepeater ItemsSource="{Binding Courses}">
+                                        <ItemsRepeater.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Classes="CourseItem" TextWrapping="Wrap" Text="{Binding Name, StringFormat= - {0}}"/>
+                                            </DataTemplate>
+                                        </ItemsRepeater.ItemTemplate>
+                                    </ItemsRepeater>
+                                    <Button Classes="DeleteButton"
+                                            Command="{Binding $parent[UserControl].((vm:AllUsersViewModel)DataContext).DeleteUser}"
+                                            CommandParameter="{Binding Id}" Margin="0 20 15 20">
+                                        <TextBlock Classes="TitleButtonDel"
+                                                   Text="Удалить пользователя">
+                                        </TextBlock>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

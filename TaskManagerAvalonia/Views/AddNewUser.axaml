@@ -1,0 +1,64 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.AddNewUser"
+             x:DataType="vm:AddAndEditUserViewModel">
+
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock Classes="PageName"
+                       Text="Добавление нового пользователя"
+                       HorizontalAlignment="Left">
+            </TextBlock>
+            <StackPanel Spacing="16">
+                <TextBox Classes="TextBoxUserData"
+                         Watermark="Логин"
+                         Text="{Binding CurrentUser.Login}">
+                </TextBox>
+                <TextBox Classes="TextBoxUserData"
+                         Watermark="Пароль"
+                         PasswordChar="•"
+                         Text="{Binding EnteredPassword}"
+                         Margin="0 0 0 15">                    
+                </TextBox>
+                <TextBox Classes="TextBoxUserData"
+                         Watermark="Имя"
+                         Text="{Binding CurrentUser.FirstName}">                    
+                </TextBox>
+                <TextBox Classes="TextBoxUserData"
+                         Watermark="Фамилия"
+                         Text="{Binding CurrentUser.LastName}">                    
+                </TextBox>
+                <ComboBox Classes="ComboBoxUserData"
+                          PlaceholderText="Роль"
+                          HorizontalAlignment="Stretch"
+                          ItemsSource="{Binding ListUserRole}"
+                          SelectedItem="{Binding CurrentUser.IdRoleNavigation}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Role}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <Button Classes="ButtonAddUser"
+                    Command="{Binding AddNewUser}"
+                    Margin="0 20 0 0">
+                <TextBlock Classes="TitleButtonAdd"
+                           Text="Добавить пользователя">
+                </TextBlock>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

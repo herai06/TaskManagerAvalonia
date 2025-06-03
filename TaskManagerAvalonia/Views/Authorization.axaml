@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.Authorization"
+			 x:DataType="vm:AuthorizationViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+    <Grid>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="400">
+            <TextBlock Classes="Title"
+                       Text="Авторизация">                
+            </TextBlock>
+            <TextBox Classes="LoginAndPassword"
+                     Text="{Binding Login}"
+                     Watermark="Логин">                
+            </TextBox>
+            <TextBox Classes="LoginAndPassword"
+                     Text="{Binding Password}"
+                     Watermark="Пароль">              
+            </TextBox>
+            <Button Classes="Login"
+                    Command="{Binding AuthUser}">
+                <TextBlock Classes="TitleButtonLogin"
+                           Text="Войти">                    
+                </TextBlock>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,112 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.AddAndEditCourse"
+             x:DataType="vm:AddAndEditCourseViewModel">
+
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock Classes="PageName"
+                       Text="{Binding NamePage}"
+                       HorizontalAlignment="Left">
+            </TextBlock>
+            <StackPanel>
+                <TextBlock Classes="ProfileLabel"
+                       Text="Название курса:">
+                </TextBlock>
+                <TextBox Classes="ProfileInput"
+                         Text="{Binding CurrentCourse.Name}">
+                </TextBox>
+                <TextBlock Classes="ProfileLabel"
+                           Text="Описание (не обязательно):">
+                </TextBlock>
+                <TextBox Classes="ProfileInput"
+                         TextWrapping="Wrap"
+                         Text="{Binding CurrentCourse.Description}">
+                </TextBox>
+            </StackPanel>
+            <StackPanel IsVisible="{Binding IsVisibleTestsPanel}">
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Classes="ProfileLabel"
+                       Text="Тесты:">
+                </TextBlock>
+                <TextBlock Classes="ProfileLabel"
+                           Text=" отсутствуют"
+                           IsVisible="{Binding IsVisibleTests}">
+                </TextBlock>
+            </StackPanel>
+            <ScrollViewer>
+                <ListBox ItemsSource="{Binding AvailableTests}" Classes="ListBoxGray">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" HorizontalAlignment="Stretch" Margin="10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                            <TextBlock Classes="NameTestTitle" HorizontalAlignment="Stretch" Text="{Binding Name}" TextWrapping="Wrap"></TextBlock>
+                                        </StackPanel>
+                                        <Button Grid.Column="1"
+                                                     Classes="ButtonBack"
+                                                     Command="{Binding $parent[UserControl].((vm:AddAndEditCourseViewModel)DataContext).DeleteTest}"
+                                                     CommandParameter="{Binding Id}">
+                                            <Image Source="avares://TaskManagerAvalonia/Assets/icon-trash-bin.png"
+                                                   Width="20"
+                                                   Height="20">
+                                            </Image>
+                                        </Button>
+                                    </Grid>
+                                <Rectangle Grid.Row="1"
+                                               Fill="LightGray"
+                                               Height="0.5"
+                                               HorizontalAlignment="Stretch"
+                                               Margin="0"/>
+                                </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Button Classes="ButtonBack"
+                        Command="{Binding BackToPageCourses}"
+                        Margin="0 20 0 0">
+                    <TextBlock Classes="TitleButtonAdd"
+                               Text="Отмена">
+                    </TextBlock>
+                </Button>
+                <Button Classes="ButtonAddUser"
+                        Command="{Binding SaveCourse}"
+                        Margin="30 20 0 0"
+                        HorizontalAlignment="Right">
+                    <TextBlock Classes="TitleButtonAdd"
+                               Text="{Binding NameButton}">
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

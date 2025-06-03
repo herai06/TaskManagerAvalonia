@@ -1,0 +1,10 @@
+.config/
+
+.vs/
+
+*.tmp
+*.log
+
+[Bb]in/
+[Oo]bj/
+ConsoleApp1/

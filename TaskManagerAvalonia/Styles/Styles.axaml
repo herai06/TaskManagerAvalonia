@@ -1,0 +1,575 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="TextBlock.Title">
+        <Setter Property="FontSize" Value="28"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="#3F39E5"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="0 0 0 40"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="TextBox.LoginAndPassword">
+        <Setter Property="Margin" Value="0 0 0 20"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="CornerRadius" Value="8"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+    </Style>
+
+    <Style Selector="Button.Login">
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="BorderBrush" Value="#3F39E5"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Width" Value="200"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+    </Style>
+
+    <Style Selector="Button.Login:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.Login:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.TitleButtonLogin">
+        <Setter Property="FontSize" Value="18"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="Border.LeftPanel">
+        <Setter Property="Background" Value="#F9F8FF"></Setter>
+        <Setter Property="Width" Value="280"></Setter>
+        <Setter Property="Padding" Value="20 40 15 20"></Setter>
+        <Setter Property="CornerRadius" Value="0 20 20 0"></Setter>
+    </Style>
+
+    <Style Selector="Image.Profile">
+        <Setter Property="Width" Value="70"></Setter>
+        <Setter Property="Height" Value="70"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Stretch" Value="UniformToFill"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.UserName">
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Margin" Value="0 0 0 5"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.UserRole">
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontSize" Value="13"></Setter>
+    </Style>
+
+    <Style Selector="Button.EditButton">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="Width" Value="240"></Setter>
+        <Setter Property="Height" Value="23"></Setter>
+        <Setter Property="Margin" Value="0 20 0 0"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="16">
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="{TemplateBinding Foreground}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBoxItem">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}"
+						CornerRadius="0">
+                    <ContentPresenter Content="{TemplateBinding Content}"
+									  ContentTemplate="{TemplateBinding ContentTemplate}"
+									  HorizontalAlignment="Stretch"
+									  VerticalAlignment="Center">
+                    </ContentPresenter>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="ListBoxItem TextBlock">
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="10 0"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="FontSize" Value="16"></Setter>
+    </Style>
+
+    <Style Selector="ListBoxItem:selected TextBlock">
+        <Setter Property="Foreground" Value="#3E4AE8"></Setter>
+    </Style>
+
+    <Style Selector="Border.Separator">
+        <Setter Property="Height" Value="0.5"></Setter>
+        <Setter Property="Background" Value="#ADABEA"></Setter>
+        <Setter Property="Margin" Value="0 12 20 12"></Setter>
+    </Style>
+
+    <Style Selector="Border.MainContent">
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="Margin" Value="40"></Setter>
+    </Style>
+
+    <Style Selector="TextBox.TitleTest">
+        <Setter Property="FontSize" Value="28"></Setter>
+        <Setter Property="Margin" Value="16 16 16 8"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="#3F39E5"></Setter>
+    </Style>
+
+    <Style Selector="Button.EditIcon, Button.DeleteIcon">
+        <Setter Property="FontSize" Value="16"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+    </Style>
+
+    <Style Selector="Button.LogoutButton">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+    </Style>
+
+    <Style Selector="Button.LogoutButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+    </Style>
+
+    <Style Selector="Button.LogoutButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.PageName">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="#3F39E5"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Margin" Value="0 0 0 40"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="TextBox.PageName">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="#3F39E5"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Margin" Value="0 0 0 20"></Setter>
+        <Setter Property="BorderBrush" Value="#4A4AFF"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+    <Style Selector="TextBox.TextBoxUserData">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="BorderBrush" Value="#3F39E5"></Setter>
+    </Style>
+
+    <Style Selector="TextBox.TextBoxUserData:pointerover">
+        <Setter Property="BorderBrush" Value="#3F39E5"/>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxUserData">
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="Margin" Value="0 0 0 20"></Setter>
+        <Setter Property="BorderBrush" Value="#3F39E5"></Setter>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxUserData:pointerover">
+        <Setter Property="BorderBrush" Value="#3F39E5"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonAddUser">
+        <Setter Property="BorderBrush" Value="#3F39E5"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Foreground" Value="#3F39E5"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonAddUser:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonAddUser:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonBack">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonBack:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonBack:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.TitleButtonAdd">
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="Button.SaveButton">
+        <Setter Property="BorderBrush" Value="#3F39E5"></Setter>
+        <Setter Property="Background" Value="#3F39E5"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.SaveButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.SaveButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.AddButton">
+        <Setter Property="Background" Value="#3F39E5"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="CornerRadius" Value="13"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.AddButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.AddButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#3F39E5"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+
+    <Style Selector="Button.ChangePhoto">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontSize" Value="13"></Setter>
+        <Setter Property="Height" Value="25"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="Width" Value="180"></Setter>
+        <Setter Property="Margin" Value="0 20 0 0"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Cursor" Value="Hand"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+                        <ContentPresenter
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Foreground="{TemplateBinding Foreground}">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="TextBox.ProfileInput, DatePicker.ProfileInput">
+        <Setter Property="BorderBrush" Value="#4A4AFF"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="0 0 0 20"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="#222"/>
+    </Style>
+
+    <Style Selector="TextBlock.ProfileLabel">
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="Margin" Value="0 0 0 4"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="#222"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style Selector="ListBox.ListBoxUsers">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="IsTabStop" Value="False"></Setter>
+    </Style>
+    <Style Selector="ListBox.ListBoxUsers ListBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ListBox.ListBoxUsers ListBoxItem:focus-within /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ListBox.ListBoxUsers ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <Style Selector="Border.CardBorder">
+        <Setter Property="Background" Value="#F7F7FF"/>
+        <Setter Property="BorderBrush" Value="#F7F7FF"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Margin" Value="0 20 20 0"/>
+        <Setter Property="Width" Value="500"/>
+    </Style>
+
+    <Style Selector="StackPanel.CoursesSection">
+        <Setter Property="Spacing" Value="10"/>
+    </Style>
+
+    <Style Selector="TextBlock.SectionTitle">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="#333333"/>
+        <Setter Property="Margin" Value="10 10 0 0"/>
+    </Style>
+
+    <Style Selector="TextBlock.CourseItem">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="Margin" Value="5 0 10 7"/>
+    </Style>
+
+    <Style Selector="StackPanel.UserInfoSection">
+        <Setter Property="Spacing" Value="5"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+    </Style>
+
+    <Style Selector="TextBlock.UserNameCard">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#222222"/>
+    </Style>
+
+    <Style Selector="TextBlock.UserRoleCard">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="Foreground" Value="#666666"/>
+    </Style>
+
+    <Style Selector="Button.DeleteButton">
+        <Setter Property="BorderBrush" Value="#EA3C62"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+        <Setter Property="Foreground" Value="#EA3C62"></Setter>
+    </Style>
+
+    <Style Selector="Button.DeleteButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="#EA3C62"></Setter>
+    </Style>
+
+    <Style Selector="Button.DeleteButton:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="#EA3C62"></Setter>
+    </Style>
+
+    <Style Selector="TextBlock.TitleButtonDel">
+        <Setter Property="Foreground" Value="#EA3C62"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Margin" Value="0 0 0 20"/>
+        <Setter Property="MinWidth" Value="200"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="#333333"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole:pointerover">
+        <Setter Property="BorderBrush" Value="#0078D7"/>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole:focus">
+        <Setter Property="BorderBrush" Value="#0078D7"/>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole ComboBoxItem">
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#333333"/>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole ComboBoxItem:pointerover">
+        <Setter Property="Background" Value="#F0F0F0"/>
+    </Style>
+
+    <Style Selector="ComboBox.ComboBoxRole ComboBoxItem:selected">
+        <Setter Property="Background" Value="#0078D7"/>
+        <Setter Property="Foreground" Value="#FFFFFF"/>
+    </Style>
+
+    <Style Selector="TextBlock.ComboBoxRoleName">
+        <Setter Property="Padding" Value="4"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+    </Style>
+
+    <Style Selector="Border.CourseCard">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderBrush" Value="#3F39E5"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Padding" Value="20"/>
+    </Style>
+
+    <Style Selector="TextBlock.CourseTitle">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0 0 0 10"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.CourseDescription">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Margin" Value="0,0,0,16"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style Selector="TextBlock.TestsTitle">
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+
+    <Style Selector="TextBlock.TestItem">
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+
+    <Style Selector="ListBox.ListBoxGray">
+        <Setter Property="Background" Value="#F7F7F7"></Setter>
+        <Setter Property="IsTabStop" Value="False"></Setter>
+    </Style>
+    <Style Selector="ListBox.ListBoxGray ListBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ListBox.ListBoxGray ListBoxItem:focus-within /template/ ContentPresenter">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    <Style Selector="ListBox.ListBoxGray ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="#F1F0FF"/>
+    </Style>
+
+    <Style Selector="TextBlock.NameTestTitle">
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontFamily" Value="Roboto"></Setter>
+        <Setter Property="FontWeight" Value="Medium"/>
+    </Style>
+
+    <Style Selector="Button.ButtonDel">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="#F1F0FF"></Setter>
+        <Setter Property="BorderThickness" Value="3"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="CornerRadius" Value="10"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonDel:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+
+    <Style Selector="Button.ButtonDel:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#F1F0FF"></Setter>
+        <Setter Property="Foreground" Value="Black"></Setter>
+    </Style>
+    
+
+</Styles>

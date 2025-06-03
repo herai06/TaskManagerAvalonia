@@ -1,0 +1,108 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             xmlns:conv="using:TaskManagerAvalonia.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.AddTest"
+             x:DataType="vm:AddTestViewModel">
+
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+
+    <UserControl.Resources>
+        <conv:DefaultIfEmptyConverter x:Key="DefaultIfEmptyConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <TextBox Classes="PageName"
+                     Text="{Binding TestTitle}"
+                     LostFocus="OnTextBoxLostFocus"
+                     Watermark="Введите название теста..."
+                     HorizontalAlignment="Stretch">
+            </TextBox>
+            <TextBox Classes="ProfileInput"
+                     TextWrapping="Wrap"
+                     Text="{Binding TestDescription}"
+                     Watermark="Описание">
+            </TextBox>
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 20">
+                <TextBlock Classes="ProfileLabel"
+                           VerticalAlignment="Center"
+                           Margin="0 0 30 0"
+                           FontSize="18"
+                           Text="Задания">
+                </TextBlock>
+                <Button Classes="SaveButton"
+                        Command="{Binding AddTaskCommand}"
+                        Width="150"
+                        CornerRadius="10"
+                        VerticalAlignment="Top">
+                    <TextBlock Classes="ProfileLabel"
+                               Margin="0"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               FontSize="13"
+                               FontWeight="Normal"
+                               Text="+ Добавить задание">
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+            <ScrollViewer>
+                <ListBox ItemsSource="{Binding Tasks}" Classes="ListBoxGray">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch" Margin="0 2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Stretch" FontWeight="Bold"/>
+                                </StackPanel>
+                                <Button Grid.Column="1" Content="Удалить" Margin="5 0 0 0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Stretch"
+                    Margin="0 40 0 20">
+            <Button Classes="ButtonBack"
+                    Command="{Binding }"
+                    Margin="0 20 0 0">
+                <TextBlock Classes="TitleButtonAdd"
+                           Text="Очистить">
+                </TextBlock>
+            </Button>
+            <Button Classes="ButtonAddUser"
+                    Command=""
+                    Margin="30 20 0 0"
+                    HorizontalAlignment="Right">
+                <TextBlock Classes="TitleButtonAdd"
+                           Text="Сохранить тест">
+                </TextBlock>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,135 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             xmlns:conv="using:TaskManagerAvalonia.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.ProfileEditing"
+             x:DataType="vm:AddAndEditUserViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <conv:DateConverter x:Key="dateConverter"/>
+    </UserControl.Resources>
+    <UserControl.Resources>
+        <conv:ImageConverter x:Key="imageConverter"/>
+    </UserControl.Resources>
+
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0"
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Classes="LogoutButton"
+                Command="{Binding LogoutToAccount}">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="avares://TaskManagerAvalonia/Assets/logout-icon.png"
+                       Width="20"
+                       Height="20"
+                       Margin="10">                    
+                </Image>
+                <TextBlock Text="Выйти из аккаунта"
+                           VerticalAlignment="Center">
+                </TextBlock>
+            </StackPanel>
+        </Button>
+        
+        <Button Classes="SaveButton"
+                Command="{Binding AddNewUser}"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalAlignment="Right"
+                Content="Сохранить"
+                Margin="10"
+                Width="150"
+                CornerRadius="10"
+                VerticalAlignment="Top">
+            <TextBlock Classes="TitleButtonAdd"
+                       Text="Сохранить">
+            </TextBlock>
+        </Button>
+
+        <ContentControl Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        VerticalAlignment="Top"
+                        >
+            <Grid RowDefinitions="Auto, *">
+                <Border Grid.Row="1"
+                        Background="White"
+                        CornerRadius="4"
+                        Margin="8 0 8 8">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Spacing="16">
+                            <Border Width="250"
+                                    Height="250"
+                                    CornerRadius="125"
+                                    ClipToBounds="True">
+                                <Image Source="{Binding CurrentUser.Image,Converter={StaticResource imageConverter}}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Stretch="UniformToFill">
+                                </Image>
+                            </Border>
+                            <Button Classes="ChangePhoto"
+                                    Command="{Binding EditPhoto}"
+                                    Content="Изменить фото">
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Margin="30 0 0 0"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Center">
+                            <TextBlock Classes="ProfileLabel"
+                                       Text="Имя:">
+                            </TextBlock>
+                            <TextBox Classes="ProfileInput"
+                                     Text="{Binding CurrentUser.FirstName}">
+                            </TextBox>
+                            <TextBlock Classes="ProfileLabel"
+                                       Text="Фамилия:">
+                            </TextBlock>
+                            <TextBox Classes="ProfileInput"
+                                     Text="{Binding CurrentUser.LastName}">
+                            </TextBox>
+                            <TextBlock Classes="ProfileLabel"
+                                       Text="Телефон:">
+                            </TextBlock>
+                            <TextBox Classes="ProfileInput"
+                                     Text="{Binding CurrentUser.Phone}">
+                            </TextBox>
+                            <TextBlock Classes="ProfileLabel"
+                                       Text="Дата рождения:">
+                            </TextBlock>
+                            <DatePicker Classes="ProfileInput"
+                                        SelectedDate="{Binding CurrentUser.BirthDate, Converter={StaticResource dateConverter}}"
+                                        HorizontalAlignment="Left">
+                            </DatePicker>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </ContentControl>
+    </Grid>
+</UserControl>

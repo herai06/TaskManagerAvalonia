@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    </PropertyGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Assets\icon-trash-bin.png" />
+        <None Remove="Assets\profile.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.1.4" />
+        <PackageReference Include="Avalonia.Controls.ItemsRepeater" Version="11.1.4" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.1.4" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.4" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.4" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.4" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.4" />
+        <PackageReference Include="MessageBox.Avalonia" Version="3.2.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    </ItemGroup>
+    <ItemGroup>
+        <UpToDateCheckInput Remove="Views\AllUsers.axaml" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="TaskTreeManagementSystem">
+        <HintPath>..\..\..\..\Downloads\Telegram Desktop\TaskTreeManagementSystem\TaskTreeManagementSystem\TaskTreeManagementSystem\bin\Debug\net8.0\TaskTreeManagementSystem.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="Views\AddAndEditCourse.axaml.cs">
+          <DependentUpon>AddAndEditCourse.axaml</DependentUpon>
+        </Compile>
+        <Compile Update="Views\AddNewUser.axaml.cs">
+            <DependentUpon>AddNewUser.axaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+</Project>

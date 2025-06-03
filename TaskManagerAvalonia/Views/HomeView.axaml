@@ -1,0 +1,91 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             xmlns:conv="using:TaskManagerAvalonia.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.HomeView"
+             x:DataType="vm:HomeViewModel">
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+    <UserControl.Resources>
+        <conv:ImageConverter x:Key="myImageConverter"></conv:ImageConverter>
+        <conv:SeparatorBoolConverter x:Key="separatorBoolConverter"></conv:SeparatorBoolConverter>
+    </UserControl.Resources>
+
+    <DockPanel LastChildFill="True">
+        <Border Classes="LeftPanel"
+                DockPanel.Dock="Left">
+            <Grid RowDefinitions="0.5*, *, Auto">
+                <StackPanel Grid.Row="0">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Width="70" Height="70" CornerRadius="35" ClipToBounds="True">
+                            <Image Classes="Profile"
+                               Source="{Binding User.Image,Converter={StaticResource myImageConverter}}">
+                            </Image>
+                        </Border>
+                        
+                        <StackPanel VerticalAlignment="Center"
+                                    Margin="15 0 0 0">
+                            <TextBlock Classes="UserName">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="User.FirstName"/>
+                                        <Binding Path="User.LastName"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock Classes="UserRole"
+                                       Text="{Binding User.IdRoleNavigation.Role}">
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                    <Button Classes="EditButton"
+                            Command="{Binding ToEditingPage}">
+                            Редактировать
+                    </Button>
+                </StackPanel>
+                <ListBox ItemsSource="{Binding MenuItems}"
+                         SelectedItem="{Binding SelectedMenuItem}"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         Classes="ListBoxItem"
+                         Grid.Row="1">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Title}"
+                                           TextWrapping="Wrap"
+                                           Width="200">                                   
+                                </TextBlock>
+                                <Border Classes="Separator"
+                                        IsVisible="{Binding IsLast, Converter={StaticResource separatorBoolConverter}}">                                    
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Classes="LogoutButton"
+                        Command="{Binding LogoutToAccount}"
+                        HorizontalAlignment="Left"
+                        Grid.Row="2">
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="8">
+                        <Image Source="avares://TaskManagerAvalonia/Assets/logout-icon.png"
+                               Width="20"
+                               Height="20">
+                        </Image>
+                        <TextBlock Text="Выйти"
+                                   VerticalAlignment="Center">
+                        </TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Classes="MainContent">
+            <ContentControl Content="{Binding CurrentPage}"></ContentControl>
+        </Border>
+    </DockPanel>
+</UserControl>

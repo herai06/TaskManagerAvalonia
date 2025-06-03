@@ -1,0 +1,92 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TaskManagerAvalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TaskManagerAvalonia.AllTeachersCourses"
+             x:DataType="vm:AllTeachersCoursesViewModel">
+    
+    <UserControl.Styles>
+        <StyleInclude Source="avares://TaskManagerAvalonia/Styles/Styles.axaml"></StyleInclude>
+    </UserControl.Styles>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Classes="PageName"
+                   Text="Курсы и тесты"
+                   HorizontalAlignment="Left">
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="0"
+                    HorizontalAlignment="Right">
+            <Button Classes="SaveButton"
+                    Command="{Binding AddCourseCommand}"
+                    Width="150"
+                    CornerRadius="10"
+                    VerticalAlignment="Top">
+                <TextBlock Classes="TitleButtonAdd"
+                           Text="+ Добавить курс">
+                </TextBlock>
+            </Button>
+        </StackPanel>
+        
+        <ScrollViewer Grid.Row="1">
+            <ListBox ItemsSource="{Binding Courses}" Classes="ListBoxUsers">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Classes="CourseCard" Margin="0 0 10 20" Width="700">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Classes="CourseTitle" Text="{Binding Name}" TextWrapping="Wrap"/>
+                                    <TextBlock Classes="CourseDescription" Text="{Binding AvailabilityDescription, StringFormat=Описание: {0}}" TextWrapping="Wrap"/>
+                                    <StackPanel IsVisible="{Binding AvailabilityTests}">
+                                        <TextBlock Classes="TestsTitle" Text="Тесты:"/>
+                                        <ItemsRepeater ItemsSource="{Binding Tests}">
+                                            <ItemsRepeater.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Classes="TestItem" TextWrapping="Wrap" Text="{Binding Name, StringFormat= - {0}}"/>
+                                                </DataTemplate>
+                                            </ItemsRepeater.ItemTemplate>
+                                        </ItemsRepeater>
+                                    </StackPanel>
+                                    
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                    <Button Classes="ButtonBack"
+                                            Command="{Binding $parent[UserControl].((vm:AllTeachersCoursesViewModel)DataContext).EditCourseCommand}"
+                                            CommandParameter="{Binding Id}">
+                                        <TextBlock Classes="TitleButtonAdd"
+                                                   Text="Редактировать">
+                                        </TextBlock>
+                                    </Button>
+                                    <Button Classes="ButtonDel"
+                                            Margin="0 20 0 0"
+                                            Command="{Binding $parent[UserControl].((vm:AllTeachersCoursesViewModel)DataContext).DeleteCourse}"
+                                            CommandParameter="{Binding Id}">
+                                        <TextBlock Classes="TitleButtonAdd"
+                                                   Text="Удалить курс">
+                                        </TextBlock>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
